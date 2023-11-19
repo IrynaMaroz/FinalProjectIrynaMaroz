@@ -17,7 +17,8 @@ public class PiguLtLoginTest
     public void LoginToPiguLtWithValidCredentials()
     {
         driver.Navigate().GoToUrl("https://pigu.lt/lt/");
-
+        IWebElement closeCookies = driver.FindElement(By.XPath("//*[@id=\'cookie_block\']/div/div/div[2]/div[2]/button[3]"));
+        closeCookies.Click();
         IWebElement loginButton = driver.FindElement(By.XPath("//*[@id=\'headeMenu\']/li[1]/a/i"));
         loginButton.Click();
         IWebElement prisijungtiButton = driver.FindElement(By.XPath("//*[@id=\'headeMenu\']/li[1]/div/div/div[2]/a[1]"));
