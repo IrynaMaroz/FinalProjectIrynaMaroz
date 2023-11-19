@@ -77,6 +77,23 @@ public class PiguLtLoginTest
         Assert.That(expectedAddedToCart, Is.EqualTo(addedToCart.Text));
     }
 
+    [Test, Order (4)]
+    public void ShoppingCartPurchaseWithEmptyBuyerInformation()
+    {
+
+        driver.FindElement(By.XPath("//*[@id=\'buy\']")).Click(); //press buy button for past test performint
+
+        
+        driver.FindElement(By.XPath("//*[@id=\'form154416133\']/div[2]/div[4]/div[2]/div[2]/div[2]/div/div/button")).Click();
+
+        driver.FindElement(By.XPath("//*[@id=\'create_customer\']/div[3]/div[3]/div/div/button")).Click();
+        System.Threading.Thread.Sleep(150);
+        IWebElement inputName = driver.FindElement(By.XPath("//*[@id=\'name\']"));
+        string expectedBorderColor = "rgb(255, 0, 0)";
+        string actualBorderColor = inputName.GetCssValue("border-color");    
+        Assert.That(actualBorderColor, Is.EqualTo(expectedBorderColor));
+    }
+
 
     [TearDown]
     public void TearDown()
