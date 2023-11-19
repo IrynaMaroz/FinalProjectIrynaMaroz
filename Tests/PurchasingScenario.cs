@@ -1,7 +1,9 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+using System;
 
 public class PiguLtLoginTest
 {
@@ -92,6 +94,19 @@ public class PiguLtLoginTest
         string expectedBorderColor = "rgb(255, 0, 0)";
         string actualBorderColor = inputName.GetCssValue("border-color");    
         Assert.That(actualBorderColor, Is.EqualTo(expectedBorderColor));
+    }
+
+    [Test, Order (5)]
+    public void DeleteItemsFromShoppingCart()
+    {
+        IWebElement returnToShoppingCart = driver.FindElement(By.XPath("//*[@id=\'cartInHeader\']/li/a/i"));
+        //System.Threading.Thread.Sleep(2000);
+        WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id=\'cartWidget\']/a")));
+        IWebElement deleteItemFromShoppingCart = driver.FindElement(By.XPath("//*[@id=\'productSliceBlock435675408\']/td[6]/div/div[2]"));
+        string expectedItemDeleted = "Jūsų prekių krepšelis tuščias";
+        IWebElement deletedItem = driver.FindElement(By.XPath("//*[@id=\'mainBlock\']/div/div[1]/div/div"));
+        Assert.That(expectedItemDeleted, Is.EqualTo(deletedItem.Text));
     }
 
 
