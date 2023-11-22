@@ -97,7 +97,7 @@ public class PiguLtLoginTest
     }
 
     [Test, Order (4)]
-    public void ShoppingCartContinueButton()
+    public void ShoppingCartBuyButton()
     {
         driver.Navigate().GoToUrl("https://pigu.lt/lt/");
         System.Threading.Thread.Sleep(1000);
@@ -129,7 +129,7 @@ public class PiguLtLoginTest
         driver.FindElement(By.XPath("//*[@id='buy']")).Click(); //press buy button 
         System.Threading.Thread.Sleep(2000);
         string expectedResult = "VIENETO KAINA";
-        IWebElement actualResult = driver.FindElement(By.XPath("//*[@id='form154739450']/div[2]/table/tbody/tr[1]/th[2]"));
+        IWebElement actualResult = driver.FindElement(By.ClassName("white-space_nowrap"));
         Assert.That(expectedResult, Is.EqualTo(actualResult.Text));
     }
 
@@ -164,12 +164,11 @@ public class PiguLtLoginTest
         addToCartButton.Click();
         System.Threading.Thread.Sleep(2000);
         driver.FindElement(By.XPath("//*[@id='buy']")).Click(); //press buy button 
-        //System.Threading.Thread.Sleep(2000);
         WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='cartWidget']/a")));
-        IWebElement deleteItemFromShoppingCart = driver.FindElement(By.XPath("//*[@id='productSliceBlock436384410']/td[6]/div/div"));
-        string expectedItemDeleted = "Jūsų prekių krepšelis tuščias";
-        IWebElement deletedItem = driver.FindElement(By.XPath("//*[@id='mainBlock']/div/div[1]/div/div"));
+        IWebElement deleteItemFromShoppingCart = driver.FindElement(By.ClassName("remove_item"));
+        string expectedItemDeleted = "Peržiūrėti pasiūlymus";
+        IWebElement deletedItem = driver.FindElement(By.ClassName("c-btn--secondary"));
         Assert.That(expectedItemDeleted, Is.EqualTo(deletedItem.Text));
     }
 
