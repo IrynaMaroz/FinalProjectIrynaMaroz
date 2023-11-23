@@ -87,7 +87,7 @@ public class PiguLtLoginTest
         firstResult.Click();
 
         System.Threading.Thread.Sleep(2000);
-        IWebElement addToCartButton = driver.FindElement(By.XPath("//*[@id='product-sidebar']/div[1]/div[6]/div/div[1]"));
+        IWebElement addToCartButton = driver.FindElement(By.XPath("//*[@id='product-sidebar']/div[2]/div[6]/div/div[1]"));
         addToCartButton.Click();
 
         System.Threading.Thread.Sleep(5000);
@@ -123,7 +123,7 @@ public class PiguLtLoginTest
         firstResult.Click();
 
         System.Threading.Thread.Sleep(2000);
-        IWebElement addToCartButton = driver.FindElement(By.XPath("//*[@id='product-sidebar']/div[1]/div[6]/div/div[1]"));
+        IWebElement addToCartButton = driver.FindElement(By.XPath("//*[@id='product-sidebar']/div[2]/div[6]/div/div[1]"));
         addToCartButton.Click();
         System.Threading.Thread.Sleep(2000);
         driver.FindElement(By.XPath("//*[@id='buy']")).Click(); //press buy button 
@@ -160,7 +160,7 @@ public class PiguLtLoginTest
         firstResult.Click();
 
         System.Threading.Thread.Sleep(2000);
-        IWebElement addToCartButton = driver.FindElement(By.XPath("//*[@id='product-sidebar']/div[1]/div[6]/div/div[1]"));
+        IWebElement addToCartButton = driver.FindElement(By.XPath("//*[@id='product-sidebar']/div[2]/div[6]/div/div[1]"));
         addToCartButton.Click();
         System.Threading.Thread.Sleep(2000);
         driver.FindElement(By.XPath("//*[@id='buy']")).Click(); //press buy button 
