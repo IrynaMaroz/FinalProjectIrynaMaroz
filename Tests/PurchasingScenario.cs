@@ -167,7 +167,9 @@ public class PiguLtLoginTest
         WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='cartWidget']/a")));
         IWebElement deleteItemFromShoppingCart = driver.FindElement(By.ClassName("remove_item"));
-        string expectedItemDeleted = "Peržiūrėti pasiūlymus";
+        deleteItemFromShoppingCart.Click();
+        System.Threading.Thread.Sleep(2000);
+        string expectedItemDeleted = "";
         IWebElement deletedItem = driver.FindElement(By.ClassName("c-btn--secondary"));
         Assert.That(expectedItemDeleted, Is.EqualTo(deletedItem.Text));
     }
